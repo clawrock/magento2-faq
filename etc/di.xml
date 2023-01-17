@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="ClawRock\Faq\Api\Data\CategoryInterface" type="ClawRock\Faq\Model\Category" />
+    <preference for="ClawRock\Faq\Api\CategoryRepositoryInterface" type="ClawRock\Faq\Model\CategoryRepository" />
+    <preference for="ClawRock\Faq\Api\Data\QuestionInterface" type="ClawRock\Faq\Model\Question" />
+    <preference for="ClawRock\Faq\Api\QuestionRepositoryInterface" type="ClawRock\Faq\Model\QuestionRepository" />
+    <preference for="ClawRock\Faq\Api\Data\CategorySearchResultsInterface" type="ClawRock\Faq\Model\CategorySearchResults" />
+    <preference for="ClawRock\Faq\Api\Data\QuestionSearchResultsInterface" type="ClawRock\Faq\Model\QuestionSearchResults" />
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\QuestionFilterProcessor"
+                 type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="category_id" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\FilterProcessor\QuestionCategoryFilter</item>
+                <item name="current_store" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\FilterProcessor\CurrentStoreFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\QuestionSortingProcessor"
+                 type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+        <arguments>
+            <argument name="defaultOrders" xsi:type="array">
+                <item name="sort_order" xsi:type="string">DESC</item>
+                <item name="updated_at" xsi:type="string">DESC</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\QuestionCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\QuestionFilterProcessor</item>
+                <item name="sorting" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\QuestionSortingProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="ClawRock\Faq\Model\QuestionRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\QuestionCollectionProcessor</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\CategoryFilterProcessor"
+                 type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="current_store" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\FilterProcessor\CurrentStoreFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\CategorySortingProcessor"
+                 type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+        <arguments>
+            <argument name="defaultOrders" xsi:type="array">
+                <item name="sort_order" xsi:type="string">DESC</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="ClawRock\Faq\Model\Api\SearchCriteria\CategoryCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\CategoryFilterProcessor</item>
+                <item name="sorting" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\CollectionProcessor\CategorySortingProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="ClawRock\Faq\Model\CategoryRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">ClawRock\Faq\Model\Api\SearchCriteria\CategoryCollectionProcessor</argument>
+        </arguments>
+    </type>
+</config>

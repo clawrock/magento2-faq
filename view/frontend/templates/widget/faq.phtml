@@ -1,0 +1,77 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * @var \ClawRock\Faq\Block\Widget\Faq $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<div class="clawrock-faq"
+     data-mage-init='{
+         "ClawRock_Faq/js/faq": {
+             "url": "<?= $escaper->escapeUrl($block->getQuestionsUrl()) ?>",
+             "limit": <?= /* @noEscape */ $block->getQuestionLimit() ?>
+         }
+     }'>
+    <form name="faq-search" action="" method="GET">
+        <div class="field search">
+            <div class="control">
+                <input type="text" placeholder="<?= $escaper->escapeHtml(__('Search')) ?>">
+            </div>
+            <div class="actions">
+                <button class="action search primary"
+                        title="<?= $escaper->escapeHtml(__('Search')) ?>"
+                        type="submit">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Search')) ?>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="faq-categories">
+        <ul>
+            <?php foreach ($block->getCategories() as $category): ?>
+                <li>
+                    <a href="#" data-category="<?= /* @noEscape */ $category->getCategoryId() ?>">
+                        <span class="faq-categories-title"><?= $escaper->escapeHtml($category->getName()) ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="faq-questions" id="clawrock-faq-questions">
+        <ul>
+            <?php foreach ($block->getQuestions() as $question): ?>
+                <li>
+                    <div data-role="collapsible" id="q-<?= /* @noEscape */ $question->getQuestionId() ?>">
+                        <a href="#" data-role="trigger">
+                            <span><?= $escaper->escapeHtml($question->getQuestion()) ?></span>
+                        </a>
+                    </div>
+                    <div data-role="content" style="display: none;">
+                        <?= $escaper->escapeHtml($question->getAnswer()) ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <div id="faq-questions-pagination">
+            <?= /* @noEscape */ $block->getPaginationLinks() ?>
+        </div>
+    </div>
+</div>
+<script id="faq-question-template" type="text/x-magento-template">
+    <li>
+        <div data-role="collapsible">
+            <a href="#" data-role="trigger">
+                <span><%- data.question %></span>
+            </a>
+        </div>
+        <div data-role="content" style="display: none;"><%= data.answer %></div>
+    </li>
+</script>
+<script id="faq-question-pagination-template" type="text/x-magento-template">
+    <a href="#" data-page="<%- data.page %>">
+        <span><%- data.page %></span>
+    </a>
+</script>

@@ -1,0 +1,48 @@
+{
+    "name": "clawrock/magento2-faq",
+    "description": "Module allows you to add questions and answers for FAQ.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "magento/framework": "~103.0",
+        "magento/module-backend": "~102.0",
+        "magento/module-widget": "~101.2"
+    },
+    "require-dev": {
+        "bitexpert/phpstan-magento": "^0.27.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "magento/magento-coding-standard": "*",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpmd/phpmd": "^2.9.1",
+        "phpstan/phpstan": "~1.9.0",
+        "phpunit/phpunit": "~9.5.0",
+        "sebastian/phpcpd": "^6.0.3",
+        "slevomat/coding-standard": "~6.4.1",
+        "squizlabs/php_codesniffer": "~3.6.0",
+        "phpstan/phpstan-phpunit": "^1.1.1"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ClawRock\\Faq\\": ""
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "magento/composer-dependency-version-audit-plugin": true
+        }
+    }
+}

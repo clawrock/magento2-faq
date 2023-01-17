@@ -1,0 +1,55 @@
+{
+    "clawrock_faq_category": {
+        "column": {
+            "category_id": true,
+            "name": true,
+            "sort_order": true,
+            "active": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "clawrock_faq_category_store": {
+        "column": {
+            "category_id": true,
+            "store_id": true
+        },
+        "index": {
+            "CLAWROCK_FAQ_CATEGORY_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CLAWROCK_FAQ_CTGR_STORE_CTGR_ID_CLAWROCK_FAQ_CTGR_CTGR_ID": true,
+            "CLAWROCK_FAQ_CATEGORY_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "clawrock_faq_question": {
+        "column": {
+            "question_id": true,
+            "question": true,
+            "answer": true,
+            "sort_order": true,
+            "created_at": true,
+            "updated_at": true,
+            "active": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "clawrock_faq_question_category": {
+        "column": {
+            "question_id": true,
+            "category_id": true
+        },
+        "index": {
+            "CLAWROCK_FAQ_QUESTION_CATEGORY_CATEGORY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_1B43711229294DD6EF59D8C3BF4CAE30": true,
+            "CLAWROCK_FAQ_QUESTION_CTGR_CTGR_ID_CLAWROCK_FAQ_CTGR_CTGR_ID": true
+        }
+    }
+}

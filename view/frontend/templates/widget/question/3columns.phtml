@@ -1,0 +1,20 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * @var \ClawRock\Faq\Block\Widget\QuestionList $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<div class="clawrock-question-list">
+    <div class="clawrock-question-list--3columns">
+        <?php foreach ($block->getQuestions() as $question): ?>
+            <div class="clawrock-question" id="q-<?= /* @noEscape */ $question->getQuestionId() ?>">
+                <div class="clawrock-question__title">
+                    <span><?= $escaper->escapeHtml($question->getQuestion()) ?></span>
+                </div>
+                <div class="clawrock-question__answer"><?= $escaper->escapeHtml($question->getAnswer()) ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

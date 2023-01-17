@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ClawRock_Faq::faq" title="FAQ" module="ClawRock_Faq" sortOrder="40" parent="Magento_Backend::content"
+             resource="ClawRock_Faq::faq"/>
+        <add id="ClawRock_Faq::category" title="Categories" module="ClawRock_Faq" sortOrder="1" parent="ClawRock_Faq::faq"
+             action="clawrock_faq/category/index" resource="ClawRock_Faq::faq"/>
+        <add id="ClawRock_Faq::question" title="Questions" module="ClawRock_Faq" sortOrder="2" parent="ClawRock_Faq::faq"
+             action="clawrock_faq/question/index" resource="ClawRock_Faq::faq"/>
+        <add id="ClawRock_Faq::config" title="Configuration" module="ClawRock_Faq" sortOrder="3" parent="ClawRock_Faq::faq"
+             action="adminhtml/system_config/edit/section/clawrock_faq" resource="ClawRock_Faq::config"/>
+    </menu>
+</config>

@@ -1,0 +1,17 @@
+parameters:
+    level: 8
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    excludePaths:
+        - vendor/*
+        - Test
+    paths:
+        - .
+    bootstrapFiles:
+        - vendor/bitexpert/phpstan-magento/autoload.php
+    ignoreErrors:
+        - '#Parameter \#\d (\$message|\$alternativeText) of method Magento\\Framework\\Message\\ManagerInterface::add([a-zA-Z]+)Message\(\) expects string(\|null)?, Magento\\Framework\\Phrase given.#'
+        - '#Cannot call method ([a-zA-Z]+)\(\) on Magento\\Framework\\DB\\Adapter\\AdapterInterface\|false.#'
+includes:
+    - vendor/bitexpert/phpstan-magento/extension.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon

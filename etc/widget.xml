@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="clawrock_faq" class="ClawRock\Faq\Block\Widget\Faq" is_email_compatible="false" ttl="86400">
+        <label translate="true">FAQ Widget</label>
+        <description translate="true">Frequently Asked Questions Accordion Widget</description>
+        <parameters>
+            <parameter name="question_limit" xsi:type="text" required="false" visible="true">
+                <label translate="true">Default questions limit</label>
+                <description translate="true">Set the question limit when no category is specified. Configuration value is used when omitted.</description>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="clawrock_faq_question" class="ClawRock\Faq\Block\Widget\Question" is_email_compatible="false" ttl="86400">
+        <label translate="true">FAQ Question Widget</label>
+        <description translate="true">Single Frequently Asked Question Widget</description>
+        <parameters>
+            <parameter name="question_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">FAQ Question</label>
+                <block class="ClawRock\Faq\Block\Adminhtml\Question\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Question...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="template" xsi:type="select">
+                <label translate="true">FAQ Question Template</label>
+                <options>
+                    <option name="collapsible" value="ClawRock_Faq::widget/question/collapsible.phtml">
+                        <label translate="true">Collapsible Template</label>
+                    </option>
+                    <option name="default" value="ClawRock_Faq::widget/question/default.phtml">
+                        <label translate="true">Default Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="clawrock_faq_question_list" class="ClawRock\Faq\Block\Widget\QuestionList" is_email_compatible="false" ttl="86400">
+        <label translate="true">FAQ Questions List Widget</label>
+        <description translate="true">List of Frequently Asked Question Widget</description>
+        <parameters>
+            <parameter name="frontend_title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="question_ids" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">FAQ Questions</label>
+                <block class="ClawRock\Faq\Block\Adminhtml\Question\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Questions...</item>
+                        </item>
+                        <item name="is_multiselect" xsi:type="boolean">true</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="template" xsi:type="select">
+                <label translate="true">FAQ Question List Template</label>
+                <options>
+                    <option name="default" value="ClawRock_Faq::widget/question/list.phtml">
+                        <label translate="true">Default Template</label>
+                    </option>
+                    <option name="3columns" value="ClawRock_Faq::widget/question/3columns.phtml">
+                        <label translate="true">3 Columns Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
+

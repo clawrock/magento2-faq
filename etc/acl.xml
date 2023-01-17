@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                    <resource id="ClawRock_Faq::faq" title="ClawRock FAQ" translate="title" sortOrder="500">
+                        <resource id="ClawRock_Faq::category" title="ClawRock FAQ Category" translate="title" sortOrder="10">
+                            <resource id="ClawRock_Faq::category_save" title="ClawRock FAQ Category Save" translate="title" sortOrder="10"/>
+                            <resource id="ClawRock_Faq::category_delete" title="ClawRock FAQ Category Delete" translate="title" sortOrder="20"/>
+                        </resource>
+                        <resource id="ClawRock_Faq::question" title="ClawRock FAQ Category" translate="title" sortOrder="20">
+                            <resource id="ClawRock_Faq::question_save" title="ClawRock FAQ Question Save" translate="title" sortOrder="10"/>
+                            <resource id="ClawRock_Faq::question_delete" title="ClawRock FAQ Question Delete" translate="title" sortOrder="20"/>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="ClawRock_Faq::config" title="ClawRock FAQ config" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
